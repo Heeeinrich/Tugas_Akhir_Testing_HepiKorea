@@ -8,6 +8,8 @@ public class loginPage {
     By password = new By.ByXPath("//*[@id=\"password\"]");
     By loginBtn = new By.ByXPath("//*[@id=\"password\"]");
     By googleBtn = new By.ByXPath("//*[@id=\"password\"]");
+    By registerLink = new By.ByXPath("//*[@id=\"app\"]/main/div/p/a");
+
     private WebDriver driver;
 
     public loginPage(WebDriver driver) {
@@ -28,6 +30,10 @@ public class loginPage {
 
     public void clickGoogleBtn() {
         driver.findElement(googleBtn).click();
+    }
+
+    public void clickRegisterLink() {
+        driver.findElement(registerLink).click();
     }
 
     public void loginTitle() {
