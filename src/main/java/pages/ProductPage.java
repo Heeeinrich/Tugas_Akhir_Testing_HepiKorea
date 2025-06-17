@@ -5,7 +5,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 
-public class productPage {
+public class ProductPage {
     By searchBar = new By.ByXPath("//*[@id=\"searchbar-container\"]/form/div/input");
     By category = new By.ByXPath("//*[@id=\"dropdownCategoryButton\"]");
     By minPrice = new By.ByXPath("//*[@id=\"app\"]/div/div[1]/div[2]/div[1]/input[1]");
@@ -15,7 +15,7 @@ public class productPage {
 
     private WebDriver driver;
 
-    public productPage(WebDriver driver) {
+    public ProductPage(WebDriver driver) {
         this.driver = driver;
     }
 

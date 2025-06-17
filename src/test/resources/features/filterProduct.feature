@@ -21,4 +21,3 @@ Feature: Product Filter
       | Fashion     | ""        | 300000    | Most Order  | Produk Ditampilkan  |
       | Fashion     | 100000    | ""        | Most Order  | Produk Ditampilkan  |
       | Fashion     | 100000    | 300000    | ""          | Produk Ditampilkan  |
-

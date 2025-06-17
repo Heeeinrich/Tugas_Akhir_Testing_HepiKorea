@@ -3,7 +3,7 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class cartPage {
+public class CartPage {
     By selectProduct = new By.ByXPath("//*[@id=\"app\"]/div/div[1]/div/div/div[2]/div/div/input");
     By deleteBtn = new By.ByXPath("//*[@id=\"app\"]/div/div[1]/div/div/div[2]/div/div/button");
     By checkoutBtn = new By.ByXPath("//*[@id=\"app\"]/div/div[1]/div/div/div[2]/form/button");
@@ -11,7 +11,7 @@ public class cartPage {
 
     private WebDriver driver;
 
-    public cartPage(WebDriver driver) {
+    public CartPage(WebDriver driver) {
         this.driver = driver;
     }
 

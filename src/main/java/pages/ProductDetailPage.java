@@ -1,11 +1,9 @@
 package pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.Select;
 
-public class productDetailPage {
+public class ProductDetailPage {
     By productName = new By.ByXPath("//*[@id=\"app\"]/div/div[1]/div[1]/div[1]/div[3]/h1[1]");
     By quantity = new By.ByXPath("//*[@id=\"product-quantity-view\"]");
     By reduceQuantity = new By.ByXPath("//*[@id=\"app\"]/div/div[1]/div[1]/div[1]/div[3]/div[3]/div[2]/div[1]");
@@ -16,7 +14,7 @@ public class productDetailPage {
 
     private WebDriver driver;
 
-    public productDetailPage(WebDriver driver) {
+    public ProductDetailPage(WebDriver driver) {
         this.driver = driver;
     }
 

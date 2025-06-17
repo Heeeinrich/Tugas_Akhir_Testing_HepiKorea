@@ -3,7 +3,7 @@ Feature: Customer Logout
 
   Background:
     Given user membuka platform HepiKorea
-    And user telah melakukan login sebagai customer
+    And user telah berhasil login sebagai customer
 
   Scenario:
     Given user berada di homepage
