@@ -6,6 +6,7 @@ import io.cucumber.java.en.Given;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -15,6 +16,16 @@ public class BaseSteps {
     public static WebDriver driver;
     //    public static String baseUrl = "https://hepikorea.pad19.me";
     public static String baseUrl = "https://hk.crazyz.biz.id";
+
+//    public boolean isSessionInvalid(WebDriver driver) {
+//        try {
+//            driver.getTitle(); // tes apakah session masih aktif
+//            return false;
+//        } catch (org.openqa.selenium.NoSuchSessionException e) {
+//            return true;
+//        }
+//    }
+
 
     @Given("user membuka platform HepiKorea")
     public void user_membuka_platform_hepi_korea() {
@@ -37,7 +48,9 @@ public class BaseSteps {
             options.addArguments("--disable-web-security");
             options.addArguments("--allow-running-insecure-content");
 
-            driver = new ChromeDriver(options);
+            // System.out.println("p");
+            // driver = new ChromeDriver(options);
+            driver = new EdgeDriver();
             driver.manage().window().maximize();
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         }

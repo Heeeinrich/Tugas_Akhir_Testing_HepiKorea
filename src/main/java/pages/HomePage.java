@@ -24,6 +24,9 @@ public class HomePage {
     private final By historyTab = By.xpath("//a[normalize-space()='History']");
     private final By ouijaProduct = By.xpath("//*[@id=\"newArrivalContainer\"]/div/div[1]/div[2]/a/button");
 
+    By userImg = By.xpath("//*[@id='user-profile-container']/div/button/img");
+    By historyBtn = By.xpath("//a[@class='flex flex-row items-center px-4 py-2 text-lg font-semibold text-[#B7B7B7] hover:bg-gray-100 group']//img[contains(@src,'/img/assets/icon/icon_history.svg')]");
+
     // Profile navigation
     private final By profilePicTab = By.xpath("//*[@id=\"user-profile-container\"]/div/button");
     private final By logoutButton = By.xpath("//*[@id=\"user-profile-container\"]/div/div/ul/li[2]/a");
@@ -131,6 +134,23 @@ public class HomePage {
 
     public void cancelLogout() {
         wait.until(ExpectedConditions.elementToBeClickable(cancelLogoutButton)).click();
+    }
+
+    public void clickUserImg() {
+        WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(userImg));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+    }
+
+    public void clickHistoryBtn() {
+        WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(historyBtn));
+
+        // 1. Paksa agar tombol ditampilkan dan tidak disable
+        ((JavascriptExecutor) driver).executeScript("arguments[0].style.display='block';", element);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].style.visibility='visible';", element);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].disabled = false;", element);
+
+        // 2. Klik tombol menggunakan JS
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
     }
 
     // Verification

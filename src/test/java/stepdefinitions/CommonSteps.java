@@ -74,6 +74,8 @@ public class CommonSteps {
 
     @Given("user telah melakukan login sebagai customers")
     public void user_login_customers() {
+        System.out.println(driver);
+        System.out.println(driver.getTitle());
         driver.get(BaseSteps.baseUrl + "/auth/login");
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='Email']"))).sendKeys("testuser@example.com");
         driver.findElement(By.xpath("//input[@placeholder='Password']")).sendKeys("testpassword");
