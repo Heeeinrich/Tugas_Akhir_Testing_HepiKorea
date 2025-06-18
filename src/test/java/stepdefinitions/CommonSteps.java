@@ -40,17 +40,6 @@ public class CommonSteps {
         }
     }
 
-    @Given("pengguna membuka platform HepiKorea")
-    public void pengguna_membuka_platform_hepi_korea() {
-        // Inisialisasi browser jika belum ada
-        if (driver == null) {
-            driver = new ChromeDriver(); // atau sesuai setup project-mu
-        }
-
-        driver.manage().window().maximize();
-        driver.get(BaseSteps.baseUrl); // ganti dengan URL sebenarnya
-    }
-
     @Given("user login sebagai admin")
     public void user_login_sebagai_admin() {
         driver = BaseSteps.driver;

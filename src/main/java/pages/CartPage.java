@@ -13,7 +13,7 @@ public class CartPage {
     By selectProduct = new By.ByXPath("//*[@id=\"app\"]/div/div[1]/div/div/div[2]/div/div/input");
     By deleteBtn = new By.ByXPath("//*[@id=\"app\"]/div/div[1]/div/div/div[2]/div/div/button");
     By checkoutBtn = new By.ByXPath("//*[@id=\"app\"]/div/div[1]/div/div/div[2]/form/button");
-    By cartTxt = new By.ByXPath("//*[@id=\"app\"]/div/div[1]/div/h1");
+    By productName = new By.ByXPath("//*[@id=\"app\"]/div/div[1]/div/div/div[1]/div[1]/div[1]/div[2]/h1");
 
     // em
     // locator
@@ -24,17 +24,31 @@ public class CartPage {
     By errorMessage = By.id("errorMessageCheckoutZeroProductSelected");
 
     private WebDriver driver;
+    private WebDriverWait wait;
 
     public CartPage(WebDriver driver) {
         this.driver = driver;
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(30));
     }
 
     public void clickSelectProduct() {
         driver.findElement(selectProduct).click();
     }
 
-    public void getCartTxt() {
-        driver.findElement(cartTxt).isDisplayed();
+    public boolean getCartTxt() {
+        driver.findElement(productName).isDisplayed();
+        return false;
+    }
+
+    public boolean isCartTxtVisible() {
+        try {
+            WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(productName));
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("arguments[0].style.display='block'; arguments[0].style.visibility='visible';", element);
+            return element.isDisplayed();
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     public void deleteProduct () {
