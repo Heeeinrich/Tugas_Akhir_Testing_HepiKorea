@@ -50,7 +50,7 @@ public class BaseSteps {
 
             // System.out.println("p");
             // driver = new ChromeDriver(options);
-            driver = new EdgeDriver();
+            driver = new ChromeDriver();
             driver.manage().window().maximize();
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         }

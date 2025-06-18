@@ -20,17 +20,18 @@ import static org.junit.Assert.assertTrue;
 public class ProductDetailSteps {
     WebDriver driver = BaseSteps.driver;
     HomePage homePage;
+    ProductPage productPage;
     ProductDetailPage productDetailPage;
 
-    @When("user memilih produk bernama Ouija")
+    @And("user memilih produk bernama Ouija")
     public void clickProductOuija() {
-        homePage = new HomePage(driver);
-        homePage.clickOuijaProduct();
-        productDetailPage = new ProductDetailPage(driver);
+        productPage = new ProductPage(driver);
+        productPage.clickOuijaProduct();
     }
 
     @Then("user akan diarahkan ke halaman product detail")
     public void isUserInProductDetailPage() {
+        productDetailPage = new ProductDetailPage(driver);
         productDetailPage.getProductImg();
     }
 

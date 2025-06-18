@@ -52,25 +52,11 @@ public class HomePage {
 
     public void clickProductTab() {
         WebElement producttab = wait.until(ExpectedConditions.presenceOfElementLocated(productTab));
-
-        // 1. Paksa agar tombol ditampilkan dan tidak disable
-        ((JavascriptExecutor) driver).executeScript("arguments[0].style.display='block';", producttab);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].style.visibility='visible';", producttab);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].disabled = false;", producttab);
-
-        // 2. Klik tombol menggunakan JS
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", producttab);
     }
 
     public void clickCartTab() {
         WebElement elementCart = wait.until(ExpectedConditions.presenceOfElementLocated(cartTab));
-
-        // 1. Paksa agar tombol ditampilkan dan tidak disable
-        ((JavascriptExecutor) driver).executeScript("arguments[0].style.display='block';", elementCart);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].style.visibility='visible';", elementCart);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].disabled = false;", elementCart);
-
-        // 2. Klik tombol menggunakan JS
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementCart);
     }
 
@@ -104,25 +90,11 @@ public class HomePage {
     // Profile & Logout
     public void clickProfileTab() {
         WebElement profleTab = wait.until(ExpectedConditions.presenceOfElementLocated(profilePicTab));
-
-        // 1. Paksa agar tombol ditampilkan dan tidak disable
-        ((JavascriptExecutor) driver).executeScript("arguments[0].style.display='block';", profleTab);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].style.visibility='visible';", profleTab);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].disabled = false;", profleTab);
-
-        // 2. Klik tombol menggunakan JS
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", profleTab);
     }
 
     public void clickLogoutBtn() {
         WebElement elementLogout = wait.until(ExpectedConditions.presenceOfElementLocated(logoutButton));
-
-        // 1. Paksa agar tombol ditampilkan dan tidak disable
-        ((JavascriptExecutor) driver).executeScript("arguments[0].style.display='block';", elementLogout);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].style.visibility='visible';", elementLogout);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].disabled = false;", elementLogout);
-
-        // 2. Klik tombol menggunakan JS
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementLogout);
     }
 
@@ -143,13 +115,6 @@ public class HomePage {
 
     public void clickHistoryBtn() {
         WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(historyBtn));
-
-        // 1. Paksa agar tombol ditampilkan dan tidak disable
-        ((JavascriptExecutor) driver).executeScript("arguments[0].style.display='block';", element);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].style.visibility='visible';", element);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].disabled = false;", element);
-
-        // 2. Klik tombol menggunakan JS
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
     }
 

@@ -27,72 +27,32 @@ public class ProductPage {
     private By minPrice = By.xpath("//*[@id='app']/div/div[1]/div[2]/div[1]/input[1]");
     private By maxPrice = By.xpath("//*[@id='app']/div/div[1]/div[2]/div[1]/input[2]");
     private By productName = By.xpath("//*[@id=\"app\"]/div/div[1]/div[2]/div[2]/div[1]/a/h1");
+    private By OuijaProduct = By.xpath("//*[@id=\"app\"]/div/div[1]/div[2]/div[2]/div[4]/a");
 
     // === Actions ===
 
-    public void searchKeyword(String keyword) {
-        WebElement input = wait.until(ExpectedConditions.elementToBeClickable(searchBar));
-        input.clear();
-        input.sendKeys(keyword + Keys.ENTER);
-    }
-
     public void clickCategory() {
         WebElement categoryDropdown = wait.until(ExpectedConditions.presenceOfElementLocated(category));
-
-        // 1. Paksa agar tombol ditampilkan dan tidak disable
-        ((JavascriptExecutor) driver).executeScript("arguments[0].style.display='block';", categoryDropdown);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].style.visibility='visible';", categoryDropdown);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].disabled = false;", categoryDropdown);
-
-        // 2. Klik tombol menggunakan JS
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", categoryDropdown);
     }
 
     public void clickBeautyCategory() {
         WebElement beautyOption = wait.until(ExpectedConditions.presenceOfElementLocated(beautyCategory));
-
-        // 1. Paksa agar tombol ditampilkan dan tidak disable
-        ((JavascriptExecutor) driver).executeScript("arguments[0].style.display='block';", beautyOption);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].style.visibility='visible';", beautyOption);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].disabled = false;", beautyOption);
-
-        // 2. Klik tombol menggunakan JS
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", beautyOption);
     }
 
     public void clickBeverageCategory() {
         WebElement beverageOption = wait.until(ExpectedConditions.presenceOfElementLocated(beverageCategory));
-
-        // 1. Paksa agar tombol ditampilkan dan tidak disable
-        ((JavascriptExecutor) driver).executeScript("arguments[0].style.display='block';", beverageOption);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].style.visibility='visible';", beverageOption);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].disabled = false;", beverageOption);
-
-        // 2. Klik tombol menggunakan JS
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", beverageOption);
     }
 
     public void clickSortBy() {
         WebElement sortByDropdown = wait.until(ExpectedConditions.presenceOfElementLocated(sortBy));
-
-        // 1. Paksa agar tombol ditampilkan dan tidak disable
-        ((JavascriptExecutor) driver).executeScript("arguments[0].style.display='block';", sortByDropdown);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].style.visibility='visible';", sortByDropdown);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].disabled = false;", sortByDropdown);
-
-        // 2. Klik tombol menggunakan JS
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", sortByDropdown);
     }
 
     public void clickMostOrderedSortBy() {
         WebElement mostOrderedOption = wait.until(ExpectedConditions.presenceOfElementLocated(mostOrderedSortBy));
-
-        // 1. Paksa agar tombol ditampilkan dan tidak disable
-        ((JavascriptExecutor) driver).executeScript("arguments[0].style.display='block';", mostOrderedOption);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].style.visibility='visible';", mostOrderedOption);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].disabled = false;", mostOrderedOption);
-
-        // 2. Klik tombol menggunakan JS
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", mostOrderedOption);
     }
 
@@ -111,26 +71,26 @@ public class ProductPage {
             maxField.sendKeys(max);
         }
     }
-
-    public void clickProduct() {
-        WebElement btn = wait.until(ExpectedConditions.elementToBeClickable(productName));
-        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", btn);
-    }
-
-    public String getProductName() {
-        WebElement nameElement = wait.until(ExpectedConditions.visibilityOfElementLocated(productName));
-        return nameElement.getText();
-    }
-
-    public boolean isProductDisplayed() {
-        try {
-            WebElement modal = wait.until(ExpectedConditions.visibilityOfElementLocated(productName));
-            return modal.isDisplayed();
-        } catch (Exception e) {
-            System.out.println("Modal tidak muncul: " + e.getMessage());
-            return false;
-        }
-    }
+//
+//    public void clickProduct() {
+//        WebElement btn = wait.until(ExpectedConditions.elementToBeClickable(productName));
+//        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", btn);
+//    }
+//
+//    public String getProductName() {
+//        WebElement nameElement = wait.until(ExpectedConditions.visibilityOfElementLocated(productName));
+//        return nameElement.getText();
+//    }
+//
+//    public boolean isProductDisplayed() {
+//        try {
+//            WebElement modal = wait.until(ExpectedConditions.visibilityOfElementLocated(productName));
+//            return modal.isDisplayed();
+//        } catch (Exception e) {
+//            System.out.println("Modal tidak muncul: " + e.getMessage());
+//            return false;
+//        }
+//    }
 
     public void inputKeyword(String keyword) {
         WebElement minField = wait.until(ExpectedConditions.elementToBeClickable(searchBar));
@@ -141,15 +101,13 @@ public class ProductPage {
         }
     }
 
+    public void clickOuijaProduct() {
+        WebElement ouija =  wait.until(ExpectedConditions.presenceOfElementLocated(OuijaProduct));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", ouija);
+    }
+
     public void isProductVisible() {
         WebElement product = wait.until(ExpectedConditions.presenceOfElementLocated(productName));
-
-        // Paksa elemen agar visible dan enabled dengan JavaScript
-        ((JavascriptExecutor) driver).executeScript("arguments[0].style.display='block';", product);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].style.visibility='visible';", product);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].disabled = false;", product);
-
-        // Tunggu sampai elemen benar-benar bisa diklik atau terlihat
         wait.until(ExpectedConditions.visibilityOf(product));
 
         // Validasi dengan assert

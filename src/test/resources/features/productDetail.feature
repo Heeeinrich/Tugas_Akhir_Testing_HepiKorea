@@ -3,7 +3,8 @@ Feature: Product Detail
 
   Scenario: Menambahkan produk yang valid dari homepage
     Given user telah melakukan login sebagai customers
-    When user memilih produk bernama Ouija
+    When user memilih tab Product pada navigation bar
+    And user memilih produk bernama Ouija
     Then user akan diarahkan ke halaman product detail
     And user memilih jumlah produk
     And user mengklik tombol Add to Cart
