@@ -1,7 +1,9 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -19,6 +21,9 @@ public class HomePage {
     private final By searchButton = By.id("btn-search");
     private final By cartTab = By.xpath("//a[contains(@href,'/cart')]");
     private final By historyTab = By.xpath("//a[normalize-space()='History']");
+
+    By userImg = By.xpath("//*[@id='user-profile-container']/div/button/img");
+    By historyBtn = By.xpath("//a[@class='flex flex-row items-center px-4 py-2 text-lg font-semibold text-[#B7B7B7] hover:bg-gray-100 group']//img[contains(@src,'/img/assets/icon/icon_history.svg')]");
 
     // Profile navigation
     private final By profilePicTab = By.cssSelector("#user-profile-container button");
@@ -87,6 +92,23 @@ public class HomePage {
 
     public void cancelLogout() {
         wait.until(ExpectedConditions.elementToBeClickable(cancelLogoutButton)).click();
+    }
+
+    public void clickUserImg() {
+        WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(userImg));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+    }
+
+    public void clickHistoryBtn() {
+        WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(historyBtn));
+
+        // 1. Paksa agar tombol ditampilkan dan tidak disable
+        ((JavascriptExecutor) driver).executeScript("arguments[0].style.display='block';", element);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].style.visibility='visible';", element);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].disabled = false;", element);
+
+        // 2. Klik tombol menggunakan JS
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
     }
 
     // Verification

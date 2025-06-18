@@ -14,8 +14,8 @@ import static org.junit.Assert.assertTrue;
 
 public class CommonSteps {
 
-    public static WebDriver driver = BaseSteps.driver;
-    public static WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    public WebDriver driver = BaseSteps.driver;
+    public WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
     @Given("user berada di homepage")
     public void user_berada_di_homepage() {
@@ -85,6 +85,8 @@ public class CommonSteps {
 
     @Given("user telah melakukan login sebagai customers")
     public void user_login_customers() {
+        System.out.println(driver);
+        System.out.println(driver.getTitle());
         driver.get(BaseSteps.baseUrl + "/auth/login");
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='Email']"))).sendKeys("testuser@example.com");
         driver.findElement(By.xpath("//input[@placeholder='Password']")).sendKeys("testpassword");
