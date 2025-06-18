@@ -9,8 +9,8 @@ import java.util.List;
 
 public class ProductPage {
 
-    private WebDriver driver;
-    private WebDriverWait wait;
+    WebDriver driver;
+    WebDriverWait wait;
 
     public ProductPage(WebDriver driver) {
         this.driver = driver;
@@ -18,16 +18,16 @@ public class ProductPage {
     }
 
     // === Locators ===
-    private By searchBar = By.xpath("(//*[@id='searchbar-container']/form/div/input)[2]");
-    private By category = By.xpath("//*[@id=\"dropdownCategoryButton\"]");
-    private By beautyCategory = By.xpath("//*[@id=\"app\"]/div/div[1]/div[2]/div[1]/div[1]/ul/li[2]/a");
-    private By beverageCategory = By.xpath("//*[@id=\"app\"]/div/div[1]/div[2]/div[1]/div/ul/li[3]/a");
-    private By sortBy = By.xpath("//*[@id=\"dropdownSortByButton\"]");
-    private By mostOrderedSortBy = By.xpath("//*[@id=\"app\"]/div/div[1]/div[2]/div[1]/div/ul/li[4]/a");
-    private By minPrice = By.xpath("//*[@id='app']/div/div[1]/div[2]/div[1]/input[1]");
-    private By maxPrice = By.xpath("//*[@id='app']/div/div[1]/div[2]/div[1]/input[2]");
-    private By productName = By.xpath("//*[@id=\"app\"]/div/div[1]/div[2]/div[2]/div[1]/a/h1");
-    private By OuijaProduct = By.xpath("//*[@id=\"app\"]/div/div[1]/div[2]/div[2]/div[4]/a");
+    By searchBar = By.xpath("(//*[@id='searchbar-container']/form/div/input)[2]");
+    By category = By.xpath("//*[@id=\"dropdownCategoryButton\"]");
+    By beautyCategory = By.xpath("//*[@id=\"app\"]/div/div[1]/div[2]/div[1]/div[1]/ul/li[2]/a");
+    By beverageCategory = By.xpath("//*[@id=\"app\"]/div/div[1]/div[2]/div[1]/div/ul/li[3]/a");
+    By sortBy = By.xpath("//*[@id=\"dropdownSortByButton\"]");
+    By mostOrderedSortBy = By.xpath("//*[@id=\"app\"]/div/div[1]/div[2]/div[1]/div/ul/li[4]/a");
+    By minPrice = By.xpath("//*[@id='app']/div/div[1]/div[2]/div[1]/input[1]");
+    By maxPrice = By.xpath("//*[@id='app']/div/div[1]/div[2]/div[1]/input[2]");
+    By productName = By.xpath("//*[@id=\"app\"]/div/div[1]/div[2]/div[2]/div[1]/a/h1");
+    By OuijaProduct = By.xpath("//*[@id=\"app\"]/div/div[1]/div[2]/div[2]/div[4]/a");
 
     // === Actions ===
 
