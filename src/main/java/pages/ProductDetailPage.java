@@ -78,21 +78,4 @@ public class ProductDetailPage {
         cartBtn.click();
     }
 
-    public void clickCart() {
-        WebElement cartTab = wait.until(ExpectedConditions.presenceOfElementLocated(cart));
-
-        // 1. Paksa agar tombol ditampilkan dan tidak disable
-        ((JavascriptExecutor) driver).executeScript("arguments[0].style.display='block';", cartTab);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].style.visibility='visible';", cartTab);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].disabled = false;", cartTab);
-
-        // 2. Klik tombol menggunakan JS
-        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", cartTab);
-    }
-
-    public String getReview() {
-        WebElement reviewElement = wait.until(ExpectedConditions.visibilityOfElementLocated(review));
-        return reviewElement.getText();
-    }
-
 }
