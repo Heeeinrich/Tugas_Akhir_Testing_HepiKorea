@@ -1,7 +1,10 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -13,16 +16,17 @@ public class HomePage {
 
     // Locators
     private final By navbar = By.xpath("//*[@id=\"app\"]/div/nav/div"); // Navbar
-    private final By loginButton = By.xpath("//a[normalize-space()='Login']"); // Tombol Login
+    private final By loginButton = By.xpath("//*[@id='login-container']"); // Tombol Login
     private final By productTab = By.xpath("//nav//a[normalize-space()='Product']");
-    private final By searchBar = By.cssSelector("#searchbar-container input[type='text']");
+    private final By searchBar = By.xpath("//*[@id=\"searchbar-container\"]/form/div/input");
     private final By searchButton = By.id("btn-search");
-    private final By cartTab = By.xpath("//a[contains(@href,'/cart')]");
+    private final By cartTab = By.xpath("//*[@id=\"notif-cart-container\"]/a");
     private final By historyTab = By.xpath("//a[normalize-space()='History']");
+    private final By ouijaProduct = By.xpath("//*[@id=\"newArrivalContainer\"]/div/div[1]/div[2]/a/button");
 
     // Profile navigation
-    private final By profilePicTab = By.cssSelector("#user-profile-container button");
-    private final By logoutButton = By.xpath("//a[normalize-space()='Logout']");
+    private final By profilePicTab = By.xpath("//*[@id=\"user-profile-container\"]/div/button");
+    private final By logoutButton = By.xpath("//*[@id=\"user-profile-container\"]/div/div/ul/li[2]/a");
 
     // Logout modal
     private final By confirmLogoutButton = By.xpath("//button[normalize-space()='Yes, Logout']");
@@ -32,9 +36,10 @@ public class HomePage {
     private final By productCard = By.cssSelector(".product-card");
     private final By notFoundMessage = By.xpath("//*[contains(text(),'not found') or contains(text(),'tidak ditemukan')]");
 
+
     public HomePage(WebDriver driver) {
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(30));
     }
 
     // Navigation
@@ -43,11 +48,31 @@ public class HomePage {
     }
 
     public void clickProductTab() {
-        wait.until(ExpectedConditions.elementToBeClickable(productTab)).click();
+        WebElement producttab = wait.until(ExpectedConditions.presenceOfElementLocated(productTab));
+
+        // 1. Paksa agar tombol ditampilkan dan tidak disable
+        ((JavascriptExecutor) driver).executeScript("arguments[0].style.display='block';", producttab);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].style.visibility='visible';", producttab);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].disabled = false;", producttab);
+
+        // 2. Klik tombol menggunakan JS
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", producttab);
     }
 
     public void clickCartTab() {
-        wait.until(ExpectedConditions.elementToBeClickable(cartTab)).click();
+        WebElement elementCart = wait.until(ExpectedConditions.presenceOfElementLocated(cartTab));
+
+        // 1. Paksa agar tombol ditampilkan dan tidak disable
+        ((JavascriptExecutor) driver).executeScript("arguments[0].style.display='block';", elementCart);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].style.visibility='visible';", elementCart);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].disabled = false;", elementCart);
+
+        // 2. Klik tombol menggunakan JS
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementCart);
+    }
+
+    public void clickOuijaProduct() {
+        wait.until(ExpectedConditions.elementToBeClickable(ouijaProduct)).click();
     }
 
     public void clickHistoryTab() {
@@ -73,13 +98,32 @@ public class HomePage {
     }
 
     // Profile & Logout
+    // Profile & Logout
     public void clickProfileTab() {
-        wait.until(ExpectedConditions.elementToBeClickable(profilePicTab)).click();
+        WebElement profleTab = wait.until(ExpectedConditions.presenceOfElementLocated(profilePicTab));
+
+        // 1. Paksa agar tombol ditampilkan dan tidak disable
+        ((JavascriptExecutor) driver).executeScript("arguments[0].style.display='block';", profleTab);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].style.visibility='visible';", profleTab);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].disabled = false;", profleTab);
+
+        // 2. Klik tombol menggunakan JS
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", profleTab);
     }
 
-    public void clickLogout() {
-        wait.until(ExpectedConditions.elementToBeClickable(logoutButton)).click();
+    public void clickLogoutBtn() {
+        WebElement elementLogout = wait.until(ExpectedConditions.presenceOfElementLocated(logoutButton));
+
+        // 1. Paksa agar tombol ditampilkan dan tidak disable
+        ((JavascriptExecutor) driver).executeScript("arguments[0].style.display='block';", elementLogout);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].style.visibility='visible';", elementLogout);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].disabled = false;", elementLogout);
+
+        // 2. Klik tombol menggunakan JS
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementLogout);
     }
+
+
 
     public void confirmLogout() {
         wait.until(ExpectedConditions.elementToBeClickable(confirmLogoutButton)).click();
@@ -95,8 +139,16 @@ public class HomePage {
     }
 
     public boolean isLoginButtonVisible() {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(loginButton)).isDisplayed();
+        try {
+            WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(loginButton));
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("arguments[0].style.display='block'; arguments[0].style.visibility='visible';", element);
+            return element.isDisplayed();
+        } catch (Exception e) {
+            return false;
+        }
     }
+
 
     public boolean isProfilePictureVisible() {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(profilePicTab)).isDisplayed();

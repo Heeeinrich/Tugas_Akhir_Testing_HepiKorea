@@ -14,8 +14,8 @@ import static org.junit.Assert.assertTrue;
 
 public class CommonSteps {
 
-    public static WebDriver driver = BaseSteps.driver;
-    public static WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    public WebDriver driver = BaseSteps.driver;
+    public WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
     @Given("user berada di homepage")
     public void user_berada_di_homepage() {
@@ -38,17 +38,6 @@ public class CommonSteps {
         } catch (Exception e) {
             throw new RuntimeException("Gagal membuka halaman login: " + e.getMessage(), e);
         }
-    }
-
-    @Given("pengguna membuka platform HepiKorea")
-    public void pengguna_membuka_platform_hepi_korea() {
-        // Inisialisasi browser jika belum ada
-        if (driver == null) {
-            driver = new ChromeDriver(); // atau sesuai setup project-mu
-        }
-
-        driver.manage().window().maximize();
-        driver.get(BaseSteps.baseUrl); // ganti dengan URL sebenarnya
     }
 
     @Given("user login sebagai admin")
