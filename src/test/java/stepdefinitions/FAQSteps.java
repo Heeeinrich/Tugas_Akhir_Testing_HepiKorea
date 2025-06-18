@@ -3,8 +3,8 @@ package stepdefinitions;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.example.AdminDashboardPage;
-import org.example.FAQPage;
+import pages.AdminDashboardPage;
+import pages.FAQPage;
 import org.junit.Assert;
 
 import static stepdefinitions.BaseSteps.driver;

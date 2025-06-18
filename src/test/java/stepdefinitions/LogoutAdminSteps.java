@@ -3,9 +3,9 @@ package stepdefinitions;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.example.AdminDashboardPage;
-import org.example.HomePage;
-import org.example.LoginPage;
+import pages.AdminDashboardPage;
+import pages.HomePage;
+import pages.LoginPage;
 import org.openqa.selenium.WebDriver;
 
 import static org.junit.Assert.assertTrue;
