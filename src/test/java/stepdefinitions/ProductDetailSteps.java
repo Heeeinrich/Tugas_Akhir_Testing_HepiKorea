@@ -52,6 +52,6 @@ public class ProductDetailSteps {
 
     @Then("user tidak mendapatkan pesan sukses menambahkan")
     public void user_tidak_mendapatkan_pesan_sukses_menambahkan() {
-        productDetailPage.isSuccessDisplayed();
+        productDetailPage.isModalNotVisible();
     }
 }

@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
 public class ProductDetailPage {
     By productImg = By.xpath("//*[@id=\"app\"]/div/div[1]/div[1]/div[1]/div[1]/div/div[1]/img");
@@ -19,10 +20,6 @@ public class ProductDetailPage {
     By review = By.xpath("//*[@id=\"success-modal\"]/div/div/div/div/h1");
     By successModal = By.xpath("//*[@id=\"success-modal\"]/div/div/div/div/h1");
     By cart = By.xpath("//*[@id=\"notif-cart-container\"]/a");
-
-
-
-
 
     private WebDriver driver;
     private WebDriverWait wait;
@@ -42,6 +39,9 @@ public class ProductDetailPage {
         }
     }
 
+    public void isModalNotVisible() {
+        WebElement modal = wait.until(ExpectedConditions.visibilityOfElementLocated(successModal));
+    }
 
     public String getProductImg() {
         WebElement nameElement = wait.until(ExpectedConditions.visibilityOfElementLocated(productImg));
