@@ -12,7 +12,8 @@ Feature: Product Detail
 
   Scenario: Gagal menambahkan produk karena keranjang penuh dari homepage
     Given user berada di homepage
-    When user memilih produk bernama Ouija
+    When user memilih tab Product pada navigation bar
+    And user memilih produk bernama Ouija
     Then user akan diarahkan ke halaman product detail
     And user memilih jumlah produk
     And user mengklik tombol Add to Cart
