@@ -115,6 +115,9 @@ public class HomePage {
 
     public void clickHistoryBtn() {
         WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(historyBtn));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].style.display='block';", element);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].style.visibility='visible';", element);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].disabled = false;", element);
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
     }
 

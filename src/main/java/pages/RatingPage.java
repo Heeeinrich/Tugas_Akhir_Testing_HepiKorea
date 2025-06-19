@@ -39,10 +39,27 @@ public class RatingPage {
     // action
     public void clickFinishedTab(){
 //        driver.findElement(finishedTab).click();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement finishTab = wait.until(ExpectedConditions.elementToBeClickable(finishedTab));
-        finishTab.click();
+//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+//        WebElement finishTab = wait.until(ExpectedConditions.elementToBeClickable(finishedTab));
+//        finishTab.click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+
+        // Tunggu sampai element muncul
+        WebElement finishTab = wait.until(
+                ExpectedConditions.presenceOfElementLocated(finishedTab)
+        );
+
+        // Tambah delay manual meskipun element sudah ada
+        try {
+            Thread.sleep(5000); // tunggu 3 detik
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        // Klik dengan JavaScript
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", finishTab);
     }
+
 
     public void clickButtonReview(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
