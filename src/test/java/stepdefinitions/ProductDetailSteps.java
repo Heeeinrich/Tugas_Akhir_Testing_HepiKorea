@@ -32,7 +32,7 @@ public class ProductDetailSteps {
     @Then("user akan diarahkan ke halaman product detail")
     public void isUserInProductDetailPage() {
         productDetailPage = new ProductDetailPage(driver);
-        productDetailPage.getProductImg();
+        productDetailPage.isProductImgDisplayed();
     }
 
     @And("user memilih jumlah produk")
