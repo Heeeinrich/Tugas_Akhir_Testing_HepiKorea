@@ -51,7 +51,7 @@ public class RatingPage {
 
         // Tambah delay manual meskipun element sudah ada
         try {
-            Thread.sleep(5000); // tunggu 3 detik
+            Thread.sleep(6000); // tunggu 3 detik
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

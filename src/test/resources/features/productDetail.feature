@@ -10,7 +10,7 @@ Feature: Product Detail
     And user mengklik tombol Add to Cart
     Then user mendapatkan pesan sukses menambahkan
 
-  Scenario: Gagal menambahkan produk karena keranjang penuh dari homepage
+  Scenario: Gagal menambahkan produk karena tidak login
     Given user berada di homepage
     When user memilih tab Product pada navigation bar
     And user memilih produk bernama Ouija
