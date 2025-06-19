@@ -23,7 +23,7 @@ public class LoginPage {
     By loginWithGoogleButton = By.xpath("//*[@id=\"app\"]/main/div/a");
 
     public void navigateToLoginPage() {
-        driver.get("https://hepikorea.pad19.me/login"); // Sesuaikan dengan URL login sebenarnya
+        driver.get("https://hk.crazyz.biz.id/auth/login"); // Sesuaikan dengan URL login sebenarnya
     }
 
     public void enterEmail(String email) {

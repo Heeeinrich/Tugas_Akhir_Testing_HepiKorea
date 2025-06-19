@@ -26,7 +26,7 @@ public class LogoutAdminSteps {
 
         // Akses halaman login dan login sebagai admin
         loginPage.navigateToLoginPage();
-        loginPage.loginAsAdmin("admin@example.com", "passwordAdmin");
+        loginPage.loginAsAdmin("admin@admin.com", "123");
 
         // Validasi admin sudah masuk dashboard
         assertTrue("Dashboard admin tidak terlihat", adminDashboardPage.isDashboardVisible());
